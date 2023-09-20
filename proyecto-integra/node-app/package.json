@@ -1,0 +1,23 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/platanob/Taller_de_integracion_2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "bugs": {
+    "url": "https://github.com/platanob/Taller_de_integracion_2/issues"
+  },
+  "homepage": "https://github.com/platanob/Taller_de_integracion_2#readme"
+}
