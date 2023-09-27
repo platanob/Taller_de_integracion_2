@@ -132,6 +132,26 @@ def crear_producto():
         return response, 201  
     else:
         return not_found()
+    
+
+@app.route('/productos/<nombre>', methods=['GET'])
+def obtener_productos_por_nombre(nombre):
+    conbd() 
+    productos = client.bananashop.productos.find({'nombre': nombre})
+    productos_encontrados = []
+
+    for producto in productos:
+        producto_encontrado = {
+            'nombre': producto['nombre'],
+            'genero': producto['genero'],
+            'talla': producto['talla'],
+            'color': producto['color'],
+            'marca': producto['marca'],
+            'costo': producto['costo']
+        }
+        productos_encontrados.append(producto_encontrado)
+
+    return productos_encontrados, 201
 
 
 if __name__ == '__main__':
