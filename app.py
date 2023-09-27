@@ -152,6 +152,31 @@ def obtener_productos_por_nombre(nombre):
         productos_encontrados.append(producto_encontrado)
 
     return productos_encontrados, 201
+@app.route('/productos', methods=['GET'])
+def obtener_todos_los_productos():
+    conbd()  # Esto parece ser tu función de conexión a la base de datos
+    
+    productos = client.bananashop.productos.find({})
+    
+    # Inicializamos una lista para almacenar todos los productos
+    todos_los_productos = []
+
+    for producto in productos:
+        # Creamos un diccionario para cada producto encontrado
+        producto_encontrado = {
+            'nombre': producto['nombre'],
+            'genero': producto['genero'],
+            'talla': producto['talla'],
+            'color': producto['color'],
+            'marca': producto['marca'],
+            'costo': producto['costo']
+            # Puedes agregar más campos aquí si es necesario
+        }
+        # Agregamos el producto al listado de todos los productos
+        todos_los_productos.append(producto_encontrado)
+
+    # Devolvemos la lista de todos los productos como respuesta
+    return todos_los_productos, 200
 
 
 if __name__ == '__main__':
