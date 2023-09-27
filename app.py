@@ -19,6 +19,17 @@ class user(UserMixin):
         self.rut = rut 
         self.direccion = direccion
 
+
+class producto():
+    def __init__(self,nombre,genero,talla,color,marca,costo) :
+        self.nombre = nombre
+        self.genero = genero
+        self.talla = talla
+        self.color = color
+        self.marca = marca 
+        self.costo = costo
+        
+
 def conbd():
     if client is None:
         return {'message': 'Error al conectar a la base de datos'}, 500
@@ -91,6 +102,36 @@ def not_found(erro=None):
     response.status_code = 404
 
     return response
+
+
+@app.route('/newproduc' , methods=['POST'])
+def crear_producto():
+    nombre = request.json.get("nombre")
+    genero = request.json.get("genero")
+    talla  = request.json.get("talla")
+    color  = request.json.get("color")
+    marca  = request.json.get("marca")
+    costo  = request.json.get("costo")
+
+    conbd()
+
+    if nombre and genero and talla and color and marca and costo :
+        id = client.bananashop.productos.insert_one(
+            {'nombre': nombre,'genero': genero , 'talla' : talla , 'color': color , 'marca' : marca , 'costo' : costo}
+        )
+        response = {
+            'id': str(id),
+            'nombre': nombre,
+            'genero': genero,
+            'talla' : talla,
+            'color': color , 
+            'marca' : marca , 
+            'costo' : costo
+
+        }
+        return response, 201  
+    else:
+        return not_found()
 
 
 if __name__ == '__main__':
