@@ -1,0 +1,33 @@
+header h1{
+    margin-top: 1%;
+    font-size: 60px;
+    font-weight: 600;
+    color: gray;
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-align: center;
+}
+
+h3{
+    font-size: 30px;
+    font-weight: 600;
+    color:grey;
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-align: center;
+    
+}
+
+
+
+#ss{
+    padding-top:5%;
+}
+.each-slide-effect > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    height: 350px;
+  }
+  

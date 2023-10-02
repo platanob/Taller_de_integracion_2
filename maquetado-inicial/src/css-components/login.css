@@ -1,0 +1,32 @@
+#cont{
+    margin-top: 15%;
+    margin-left: 200%;
+    text-align: center;
+    background-color: gainsboro;
+    border-radius: 8%;
+}
+
+#formulario{
+    text-align: center;
+    background-color: transparent;
+    width: 20%;
+    font-size: 120%;
+}   
+
+#boton-login{
+
+    margin: 10px;
+}
+
+
+h1{
+    margin-top: 1%;
+    background-color: transparent;
+    font-size: 60px;
+    font-weight: 600;
+    color: gray;
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-align:center;
+}
+
