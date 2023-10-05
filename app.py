@@ -2,14 +2,17 @@ from flask import Flask, request , jsonify
 from werkzeug.security import generate_password_hash , check_password_hash
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from flask_login import LoginManager , login_user , logout_user , login_required , UserMixin
+from flask_login import LoginManager , login_user , logout_user , UserMixin
+from flask_cors import CORS
+
 
 uri = "mongodb+srv://benja:123@bananashop.tzmfwsy.mongodb.net/?retryWites=true&w=majority"
 client = MongoClient(uri, server_api=ServerApi('1'))
 app = Flask(__name__)
+CORS(app)
 login_manager_app = LoginManager(app)
 # Configura Flask-Login
-app.secret_key = 'papaya'  # Reemplaza con una clave secreta segura
+app.secret_key = 'papaya'  
 class user(UserMixin):
     def __init__(self,nombre,correo,telefono,rut,direccion):
         self.id = correo
@@ -18,17 +21,6 @@ class user(UserMixin):
         self.telefono = telefono
         self.rut = rut 
         self.direccion = direccion
-
-
-class producto():
-    def __init__(self,nombre,genero,talla,color,marca,costo) :
-        self.nombre = nombre
-        self.genero = genero
-        self.talla = talla
-        self.color = color
-        self.marca = marca 
-        self.costo = costo
-        
 
 def conbd():
     if client is None:
@@ -67,6 +59,7 @@ def create_user():
     rut = request.json.get("rut")
     direccion = request.json.get("direccion")
     contra = request.json.get("contra")
+    print("entre")
 
     conbd()
 

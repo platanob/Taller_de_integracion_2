@@ -4,6 +4,9 @@ import {Slide} from 'react-slideshow-image';
 import '../css-components/home.css'
 import 'react-slideshow-image/dist/styles.css';
 
+
+
+
 const Home = () => {
   return (
     <div >
