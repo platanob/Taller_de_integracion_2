@@ -43,14 +43,12 @@ const Register = () => {
         <div>
             <h1>Crea una cuenta!</h1>
         </div>
-    <form id='formulario' onSubmit={handleSubmit}>
+    <form id='formulario' onSubmit={handleSubmit}>  
 
         <div className='container' id='cont'>
             <div className="form-group">
                 <label>Name</label>
                 <input type="text" className='form-control' placeholder="Name"/>
-                <label>Last Name</label>
-                <input type="text" className="form-control" placeholder="Lastname"/>
             </div>
             <div className='form-group'>
                 <label>Email</label>
