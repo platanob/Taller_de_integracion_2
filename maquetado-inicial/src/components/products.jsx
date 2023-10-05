@@ -9,17 +9,13 @@ const Products = () => {
         <table className='table table-dark'>
           <thead>
             <tr>
-              <th scope='col'></th>
-              <th scope='col'></th>
-              <th scope='col'></th>
-              <th scope='col'></th>
-              <th scope='col'></th>
+              <th scope='col'>Producto</th>
+              <th scope='col'>Nombre</th>
+              <th scope='col'>Precio</th>
             </tr>
           </thead>
           <tbody>
             <th scope='row'>
-              <div style={{backgroundImage: 'url(https://slimages.macysassets.com/is/image/MCY/products/0/optimized/1262220_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1)',
-             backgroundSize:'100%'}}></div>
             </th>
           </tbody>
         </table>
