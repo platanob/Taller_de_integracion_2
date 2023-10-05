@@ -62,6 +62,10 @@ const Register = () => {
                 <label>Direccion</label>
                 <input type="text" className="form-control" placeholder="Direccion"/>
             </div>
+            <div className='form group'>
+                <label>Telefono</label>
+                <input type="text" className="form-control" placeholder="Telefono"/>
+            </div>
             <div className='form-group'>
                 <label>Password</label>
                 <input type='password' className='form-control' placeholder='Password'/>
