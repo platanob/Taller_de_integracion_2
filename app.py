@@ -59,7 +59,6 @@ def create_user():
     rut = request.json.get("rut")
     direccion = request.json.get("direccion")
     contra = request.json.get("contra")
-    print("entre")
 
     conbd()
 
