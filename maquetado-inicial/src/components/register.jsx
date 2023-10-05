@@ -20,7 +20,14 @@ const Register = () => {
                 <label>Email</label>
                 <input type='email' className='form-control' aria-describedby='email-help' placeholder='Email'/>
             <div/>
-
+            <div className='form group'>
+                <label>RUT</label>
+                <input type="text" className="form-control" placeholder="RUT"/>
+            </div>
+            <div className='form group'>
+                <label>Direccion</label>
+                <input type="text" className="form-control" placeholder="Direccion"/>
+            </div>
             <div className='form-group'>
                 <label>Password</label>
                 <input type='password' className='form-control' placeholder='Password'/>
