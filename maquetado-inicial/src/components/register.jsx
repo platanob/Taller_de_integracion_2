@@ -27,9 +27,30 @@ const Register = () => {
       
           // Aquí puedes manejar la respuesta del servidor si es necesario
           // por ejemplo, mostrar un mensaje al usuario
-          console.log("Solicitud enviada correctamente");
+          <div className='toast' role='alert' aria-aria-live='assertive' aria-atomic='true'>
+              <div className='toast-header'>
+                  <img />
+                  <strong className='mr-auto'>BananaShop</strong>
+                  <button type='button' className='ml-2 mb-1 close' data-dimiss='toast' aria-label='close'/>
+                   <span aria-hidden='true'>&times;</span>
+              </div>
+              <div className='toast-body'>
+                Registrado correctamente!
+            </div>
+          </div>
+
         } catch (error) {
-          console.error("Error al enviar la solicitud:", error);
+          <div className='toast' role='alert' aria-aria-live='assertive' aria-atomic='true'>
+              <div className='toast-header'>
+                  <img />
+                  <strong className='mr-auto'>BananaShop</strong>
+                  <button type='button' className='ml-2 mb-1 close' data-dimiss='toast' aria-label='close'/>
+                   <span aria-hidden='true'>&times;</span>
+              </div>
+              <div className='toast-body'>
+                Error!
+            </div>
+          </div>
         }
       };
       const handleSubmit = (event) => {
