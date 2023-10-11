@@ -2,7 +2,7 @@ from flask import Flask, request , jsonify
 from werkzeug.security import generate_password_hash , check_password_hash
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from flask_login import LoginManager , login_user , logout_user , UserMixin
+from flask_login import LoginManager , login_user , logout_user , UserMixin, login_required, current_user
 from flask_cors import CORS
 
 
@@ -170,6 +170,37 @@ def obtener_todos_los_productos():
     # Devolvemos la lista de todos los productos como respuesta
     return todos_los_productos, 200
 
+@app.route('/admin/crear_admin', methods=['POST'])
+@login_required
+def crear_admin():
+    # verifica si el usuario actual es un administrador
+    if current_user.rol != 'admin':
+        return {'message': 'Acceso no autorizado'}, 403
+
+    # obtener los datos del nuevo administrador
+    nombre = request.json.get("nombre")
+    correo = request.json.get("correo")
+    contra = request.json.get("contra")
+
+    conbd()
+
+    a = client.bananashop.users.find_one({'correo': correo})
+    if a:
+        return {'message': 'El correo ya está en uso'}
+
+    if nombre and correo:
+        contra_hash = generate_password_hash(contra)
+        
+        # agrega el nuevo administrador a la bd con el rol admin
+        id = client.bananashop.users.insert_one(
+            {'nombre': nombre,'correo': correo,
+            'telefono': request.json.get("telefono"),
+            'rut': request.json.get("rut"),
+            'direccion': request.json.get("direccion"),
+            'contra': contra_hash,
+            'rol': 'admin'  })
+    else: 
+        return not_found()
 
 if __name__ == '__main__':
     app.run(debug=True)
