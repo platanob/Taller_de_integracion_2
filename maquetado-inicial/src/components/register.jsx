@@ -27,21 +27,33 @@ const Register = () => {
             }
           });
       
+          // Aquí puedes manejar la respuesta del servidor si es necesario
+          // por ejemplo, mostrar un mensaje al usuario
+          <div className='toast' role='alert' aria-aria-live='assertive' aria-atomic='true'>
+              <div className='toast-header'>
+                  <img />
+                  <strong className='mr-auto'>BananaShop</strong>
+                  <button type='button' className='ml-2 mb-1 close' data-dimiss='toast' aria-label='close'/>
+                   <span aria-hidden='true'>&times;</span>
+              </div>
+              <div className='toast-body'>
+                Registrado correctamente!
+            </div>
+          </div>
 
-      // Verificar el estado de la respuesta
-      if (res.status === 200) {
-        // Si la solicitud fue exitosa (estado 200), leer la respuesta en formato JSON
-        const data = await res.json();
-        // Hacer algo con los datos de la respuesta, por ejemplo, mostrarlos en la consola
-        console.log("Respuesta del servidor:", data);
-      } else {
-        // Si la solicitud no fue exitosa, mostrar un mensaje de error
-        console.error("Error en la solicitud. Estado:", res.status);
-      }
-    } catch (error) {
-      // Capturar errores de red u otros errores relacionados con la solicitud
-      console.error("Error al enviar la solicitud:", error);
-    }
+        } catch (error) {
+          <div className='toast' role='alert' aria-aria-live='assertive' aria-atomic='true'>
+              <div className='toast-header'>
+                  <img />
+                  <strong className='mr-auto'>BananaShop</strong>
+                  <button type='button' className='ml-2 mb-1 close' data-dimiss='toast' aria-label='close'/>
+                   <span aria-hidden='true'>&times;</span>
+              </div>
+              <div className='toast-body'>
+                Error!
+            </div>
+          </div>
+        }
       };
       const handleSubmit = (event) => {
         event.preventDefault(); // Evitar que el formulario se envíe normalmente
