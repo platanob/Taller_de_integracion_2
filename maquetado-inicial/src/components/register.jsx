@@ -2,18 +2,20 @@ import Navbar from './navbar'
 
 const Register = () => {
     const makerEQUEST = async () => {
-        const name = document.querySelector('input[placeholder="Name"]').value;
-        const lastName = document.querySelector('input[placeholder="Lastname"]').value;
-        const email = document.querySelector('input[placeholder="Email"]').value;
-        const password = document.querySelector('input[placeholder="Password"]').value;
-      
+        const nombre = document.querySelector('input[placeholder="Name"]').value;
+        const correo = document.querySelector('input[placeholder="Email"]').value;
+        const telefono = document.querySelector('input[placeholder="Telefono"]').value;
+        const rut = document.querySelector('input[placeholder="RUT"]').value;
+        const direcion = document.querySelector('input[placeholder="Direccion"]').value
+        const contra = document.querySelector('input[placeholder="Password"]').value
+
         const datos = {
-          nombre: "benja",
-          correo: "k@k.k",
-          telefono: "1234",
-          rut: "123",
-          direccion : "kkk",
-          contra : "123"
+          nombre: nombre,
+          correo: correo,
+          telefono: telefono,
+          rut: rut,
+          direccion : direcion,
+          contra : contra
         };
       
         try {
@@ -25,12 +27,21 @@ const Register = () => {
             }
           });
       
-          // Aquí puedes manejar la respuesta del servidor si es necesario
-          // por ejemplo, mostrar un mensaje al usuario
-          console.log("Solicitud enviada correctamente");
-        } catch (error) {
-          console.error("Error al enviar la solicitud:", error);
-        }
+
+      // Verificar el estado de la respuesta
+      if (res.status === 200) {
+        // Si la solicitud fue exitosa (estado 200), leer la respuesta en formato JSON
+        const data = await res.json();
+        // Hacer algo con los datos de la respuesta, por ejemplo, mostrarlos en la consola
+        console.log("Respuesta del servidor:", data);
+      } else {
+        // Si la solicitud no fue exitosa, mostrar un mensaje de error
+        console.error("Error en la solicitud. Estado:", res.status);
+      }
+    } catch (error) {
+      // Capturar errores de red u otros errores relacionados con la solicitud
+      console.error("Error al enviar la solicitud:", error);
+    }
       };
       const handleSubmit = (event) => {
         event.preventDefault(); // Evitar que el formulario se envíe normalmente
