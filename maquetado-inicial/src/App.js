@@ -3,12 +3,15 @@ import Login from "./components/login.jsx";
 import Register from './components/register';
 import Products from './components/products';
 import Home from './components/home';
+import Carrito  from './components/carrito';
+import DataProvider from './components/DataContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 function App() {
   return (
     <div className="App">
+        <DataProvider>
           <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Home/>}></Route>
@@ -16,8 +19,10 @@ function App() {
                 <Route path='/login' element={<Login/>}></Route>
                 <Route path='/register' element={<Register/>}></Route>
                 <Route path='/products' element={<Products/>}></Route>
+                <Route path='/carrito' element={<Carrito/>}></Route>
             </Routes>
           </BrowserRouter>
+        </DataProvider>
     </div>
   );
 }
