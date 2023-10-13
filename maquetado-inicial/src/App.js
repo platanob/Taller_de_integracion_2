@@ -3,6 +3,8 @@ import Login from "./components/login.jsx";
 import Register from './components/register';
 import Products from './components/products';
 import Home from './components/home';
+import ProductsAdmin from './components/productsAdmin';
+import ProductsNew from './components/productsNew'; 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
@@ -16,6 +18,8 @@ function App() {
                 <Route path='/login' element={<Login/>}></Route>
                 <Route path='/register' element={<Register/>}></Route>
                 <Route path='/products' element={<Products/>}></Route>
+                <Route path='/productsAdmin' element={<ProductsAdmin/>}></Route>
+                <Route path='/productsNew' element={<ProductsNew/>}></Route>
             </Routes>
           </BrowserRouter>
     </div>
