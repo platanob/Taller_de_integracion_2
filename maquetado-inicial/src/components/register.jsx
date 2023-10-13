@@ -2,18 +2,20 @@ import Navbar from './navbar'
 
 const Register = () => {
     const makerEQUEST = async () => {
-        const name = document.querySelector('input[placeholder="Name"]').value;
-        const lastName = document.querySelector('input[placeholder="Lastname"]').value;
-        const email = document.querySelector('input[placeholder="Email"]').value;
-        const password = document.querySelector('input[placeholder="Password"]').value;
-      
+        const nombre = document.querySelector('input[placeholder="Name"]').value;
+        const correo = document.querySelector('input[placeholder="Email"]').value;
+        const telefono = document.querySelector('input[placeholder="Telefono"]').value;
+        const rut = document.querySelector('input[placeholder="RUT"]').value;
+        const direcion = document.querySelector('input[placeholder="Direccion"]').value
+        const contra = document.querySelector('input[placeholder="Password"]').value
+
         const datos = {
-          nombre: "benja",
-          correo: "k@k.k",
-          telefono: "1234",
-          rut: "123",
-          direccion : "kkk",
-          contra : "123"
+          nombre: nombre,
+          correo: correo,
+          telefono: telefono,
+          rut: rut,
+          direccion : direcion,
+          contra : contra
         };
       
         try {
