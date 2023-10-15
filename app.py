@@ -32,7 +32,9 @@ def login():
         correo = request.json.get("correo")
         contra = request.json.get("contra")
         usuario = client.bananashop.users.find_one({'correo' : correo})
-        if usuario and check_password_hash(usuario['contra'] , contra):
+        if usuario == None :
+            return {'message' : 'ns'}
+        if check_password_hash(usuario['contra'] , contra):
             us = user(nombre=usuario['nombre'],
                       correo=usuario['correo'],
                       telefono=usuario['telefono'],
@@ -40,9 +42,9 @@ def login():
                       direccion=usuario['direccion']
                       )
             login_user(us)
-            return {'message': 'secion iniciada'}
+            return {'message': 'si'}
         else : 
-            return {'message': 'no se pudo iniciar sesion'}
+            return {'message': 'np'}
 
 #para hacer vistas protegidas que se requiera le inicio de secion se ocupara @login_required
 
@@ -80,7 +82,7 @@ def create_user():
             'direccion': direccion,
             'contra': contra
         }
-        return response, 201  
+        return {'message' : 'si'} 
     else:
         return not_found()
     

@@ -2,6 +2,10 @@ import React from 'react'
 import '../css-components/navbar.css';
 import {Link} from 'react-router-dom'
 
+
+
+
+
 const Navbar = () => {
   return (
     <nav id='navus'>
@@ -21,6 +25,10 @@ const Navbar = () => {
 
                 <li>
                   <Link to='/products'>Products</Link>
+                </li>
+                
+                <li>
+                  <Link to="/a">🛒</Link>
                 </li>
 
 

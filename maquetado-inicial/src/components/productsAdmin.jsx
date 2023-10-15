@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Navbar from './navbar';
 import {Link} from 'react-router-dom';
+import ProductsNew from './productsNew';
 
 const ProductsAdmin = () => {
 
@@ -22,10 +23,11 @@ const getProducts = () =>{
               <th scope='col'>Nombre</th>
               <th scope='col'>Precio</th>
               <th>
-              <Link to="/products/new"
+              <Link to="/productsNew"
                     className="btn btn-outline-primary"
                     role="button"
-                    aria-pressed="true">
+                    aria-pressed="true"
+                    >
                 New Product
               </Link>
               </th>
