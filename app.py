@@ -1,5 +1,5 @@
-from flask import Flask, request , jsonify 
-from werkzeug.security import generate_password_hash , check_password_hash
+from flask import Flask, request , jsonify #pip install flask==2.3.3  
+from werkzeug.security import generate_password_hash , check_password_hash#pip install werkzeug==2.3.7 
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from flask_login import LoginManager , login_user , logout_user , UserMixin, login_required, current_user
