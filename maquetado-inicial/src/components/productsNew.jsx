@@ -10,13 +10,15 @@ const ProductsNew = () => {
         const talla = document.querySelector('input[placeholder="Talla"]').value;
         const marca = document.querySelector('input[placeholder="Marca"]').value;
         const costo = document.querySelector('input[placeholder="Precio"]').value;
+        const color = document.querySelector('input[placeholder="Color"]').value;
         const dato = {
             nombre : nombre,
             categoria : categoria,
             genero : genero,
             talla : talla,
             marca : marca ,
-            costo : costo
+            costo : costo,
+            color : color
         };
     
         try {
