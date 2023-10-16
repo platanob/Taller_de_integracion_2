@@ -121,12 +121,13 @@ def crear_producto():
     talla  = request.json.get("talla")
     marca  = request.json.get("marca")
     costo  = request.json.get("costo")
+    color = request.json.get("color")
 
     conbd()
 
     if nombre and genero and talla and categoria and marca and costo :
         id = client.bananashop.productos.insert_one(
-            {'nombre': nombre,'genero': genero , 'talla' : talla , 'categoria': categoria , 'marca' : marca , 'costo' : costo}
+            {'nombre': nombre,'genero': genero , 'talla' : talla , 'categoria': categoria , 'marca' : marca , 'costo' : costo, 'color' : color}
         )
         response = {
             'id': str(id),
@@ -135,7 +136,7 @@ def crear_producto():
             'talla' : talla,
             'categoria' : categoria , 
             'marca' : marca , 
-            'costo' : costo
+            'costo' : costo,
 
         }
         return response, 201  
@@ -156,7 +157,8 @@ def obtener_productos_por_nombre(nombre):
             'talla': producto['talla'],
             'categoria': producto['categoria'],
             'marca': producto['marca'],
-            'costo': producto['costo']
+            'costo': producto['costo'],
+            'color': producto['color']
         }
         productos_encontrados.append(producto_encontrado)
 
@@ -178,7 +180,8 @@ def obtener_todos_los_productos():
             'talla': producto['talla'],
             'color': producto['color'],
             'marca': producto['marca'],
-            'costo': producto['costo']
+            'costo': producto['costo'],
+            'categoria' : producto['categoria']
             # Puedes agregar más campos aquí si es necesario
         }
         # Agregamos el producto al listado de todos los productos

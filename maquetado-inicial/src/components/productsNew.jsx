@@ -31,7 +31,7 @@ const ProductsNew = () => {
             const data = await res.json();
             // Aquí puedes manejar la respuesta del servidor si es necesario
             // Por ejemplo, mostrar un mensaje al usuario
-            if (res.status === 200) {
+            if (res.status === 200 || res.status === 201) {
                     return {'mensaje' : 'agregado'}
             } else {
                 console.error("no se pudo agregar");
@@ -39,20 +39,26 @@ const ProductsNew = () => {
         } catch (error) {
             console.error("Error al enviar la solicitud:", error);
         }
+
     };
+    const mandardatos = (event) => {
+        event.preventDefault(); // Evitar que el formulario se envíe normalmente
+        pro(); // Llamar a la función makerEQUEST cuando se presiona el botón
+      };
+
   return (
     <div>
         <Navbar/>
         <h1>Nuevo Producto</h1>
-        <form id='formulario'>
+        <form id='formulario' onSubmit={mandardatos}>
             <div className='container' id='cont'>
                 <div className='form-group'>
                     <label>Nombre Producto</label>
-                    <input type='email' className='form-control' placeholder='Nombre'/>
+                    <input type='' className='form-control' placeholder='Nombre'/>
                 <div/>
                 <div className='form-group'>
                     <label>Categoria</label>
-                    <input type='password' className='form-control' placeholder='Categoria'/>
+                    <input type='' className='form-control' placeholder='Categoria'/>
                 </div>
                 <div className='form-group'>
                     <label>Precio</label>
