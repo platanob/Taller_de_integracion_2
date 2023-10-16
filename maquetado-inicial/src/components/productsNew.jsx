@@ -3,7 +3,43 @@ import Navbar from './navbar';
 import '../css-components/productsNew.css';
 
 const ProductsNew = () => {
-
+    const pro = async () => {
+        const nombre = document.querySelector('input[placeholder="Nombre"]').value;
+        const categoria = document.querySelector('input[placeholder="Categoria"]').value;
+        const genero = document.querySelector('input[placeholder="Genero"]').value;
+        const talla = document.querySelector('input[placeholder="Talla"]').value;
+        const marca = document.querySelector('input[placeholder="Marca"]').value;
+        const costo = document.querySelector('input[placeholder="Precio"]').value;
+        const dato = {
+            nombre : nombre,
+            categoria : categoria,
+            genero : genero,
+            talla : talla,
+            marca : marca ,
+            costo : costo
+        };
+    
+        try {
+            const res = await fetch("http://127.0.0.1:5000/newproduc", {
+                method: "POST",
+                body: JSON.stringify(dato),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            
+            const data = await res.json();
+            // Aquí puedes manejar la respuesta del servidor si es necesario
+            // Por ejemplo, mostrar un mensaje al usuario
+            if (res.status === 200) {
+                    return {'mensaje' : 'agregado'}
+            } else {
+                console.error("no se pudo agregar");
+            }
+        } catch (error) {
+            console.error("Error al enviar la solicitud:", error);
+        }
+    };
   return (
     <div>
         <Navbar/>

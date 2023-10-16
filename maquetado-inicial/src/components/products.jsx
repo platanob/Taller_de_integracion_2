@@ -4,7 +4,11 @@ import axios from "axios";
 
 const Products = () => {
   // Obtiene los datos de productos del contexto.
-  const { data } = useContext(dataContext);
+  const { data, cart, setCart } = useContext(dataContext);
+  const buyProducts = (product) => {
+    console.log(product)
+    setCart([...cart, product])
+  }
 
   useEffect(() => {
     // Peticion GET al servidor Flask para obtener productos.
@@ -19,15 +23,15 @@ const Products = () => {
   return (
     <div>
       {data.map((product) => (
-        <div className="card" key={product._id}> {/* Producto debe tener una clave unica */}
+        <div className="card" key={product._id}>
           <h3>{product.nombre}</h3>
           <h3>{product.genero}</h3>
           <h4>{product.costo}</h4>
-          <button>Comprar</button>
+          <button onClick={()=> buyProducts(product)} >Comprar</button>
         </div>
       ))}
     </div>
-  );
+  ); 
 };
-
+ 
 export default Products;

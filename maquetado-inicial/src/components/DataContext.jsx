@@ -6,6 +6,7 @@ export const dataContext = createContext();
 const DataProvider = ({ children }) => {
 // Estado data que almacenará los datos de los productos
   const [data, setData] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     // Realiza una peticion GET a la URL de la API de productos en el servidor Flask.
@@ -14,7 +15,7 @@ const DataProvider = ({ children }) => {
     setData(res.data));
   }, []);
 
-  return <dataContext.Provider value={{ data }}>{children}</dataContext.Provider>;
+  return <dataContext.Provider value={{ data, cart,setCart }}>{children}</dataContext.Provider>;
 };
 
 // Exporta el componente DataProvider

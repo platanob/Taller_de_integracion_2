@@ -4,7 +4,6 @@ import "../css-components/login.css";
 
 
 
-
 const Login = () => {
     const log = async () => {
         const correo = document.querySelector('input[placeholder="Email"]').value;
@@ -23,10 +22,10 @@ const Login = () => {
                 }
             });
             
-            const data = await res.json();
             // Aquí puedes manejar la respuesta del servidor si es necesario
             // Por ejemplo, mostrar un mensaje al usuario
             if (res.status === 200) {
+
                 if (data.message == "si"){
                     console.log("no");
                     alert("Inicio de sesión exitoso!")
@@ -39,6 +38,9 @@ const Login = () => {
                 if(data.message == "np"){
                     alert("Contraseña incorrecta, intentalo de nuevo.")
                 };
+
+                console.log("Inicio de sesión exitoso");
+
             } else {
                 alert("Fallo al iniciar sesión.")
             }
