@@ -1,0 +1,5 @@
+#table-admin{
+    display: grid;
+    place-content: center;
+    width: 50%;
+}

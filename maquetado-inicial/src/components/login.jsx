@@ -29,16 +29,18 @@ const Login = () => {
             if (res.status === 200) {
                 if (data.message == "si"){
                     console.log("no");
+                    alert("Inicio de sesión exitoso!")
                     window.location = "/home";
+                    
                 };
                 if (data.message == "ns"){
-                    // no se encontro el usuario
+                    alert("Usuario no encontrado")
                 };
                 if(data.message == "np"){
-                    // no coincide la contra 
+                    alert("Contraseña incorrecta, intentalo de nuevo.")
                 };
             } else {
-                console.error("Inicio de sesión fallido");
+                alert("Fallo al iniciar sesión.")
             }
         } catch (error) {
             console.error("Error al enviar la solicitud:", error);
