@@ -34,6 +34,8 @@ const ProductsNew = () => {
             // Aquí puedes manejar la respuesta del servidor si es necesario
             // Por ejemplo, mostrar un mensaje al usuario
             if (res.status === 200 || res.status === 201) {
+                    alert("Producto agregado")
+                    window.location = "productsAdmin"
                     return {'mensaje' : 'agregado'}
             } else {
                 console.error("no se pudo agregar");

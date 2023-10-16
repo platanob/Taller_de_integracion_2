@@ -46,7 +46,7 @@ const Navbar = () => {
       <div>
         <ul id='navi'>
           <li>
-            <Link to='/products'>Products</Link>
+            <Link to='/productos'>Products</Link>
           </li>
 
           {isAdmin && (
