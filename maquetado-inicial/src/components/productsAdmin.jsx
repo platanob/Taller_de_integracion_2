@@ -24,9 +24,13 @@ const { data } = useContext(dataContext);
           <thead className='thead-dark'>
             <tr>
               <th scope='col'>Nombre</th>
+              <th scope='col'>Categoria</th>
+              <th scope='col'>Color</th>
+              <th scope='col'>Precio</th>
+              <th scope='col'>Talla</th>
               <th scope='col'>Marca</th>
               <th scope='col'>Genero</th>
-              <th scope='col'>Costo</th>
+              
               <th>
               <Link to="/productsNew"
                     className="btn btn-outline-primary"
@@ -42,10 +46,13 @@ const { data } = useContext(dataContext);
                 {data.map((product) => {
                   return (
                       <tr key={product._id}>
-                        <td >{product.nombre}</td>
-                        <td>{product.marca}</td>
-                        <td>{product.talla}</td>
+                        <td>{product.nombre}</td>
+                        <td>{product.categoria}</td>
+                        <td>{product.color}</td>
                         <td>{product.costo}</td>
+                        <td>{product.talla}</td>
+                        <td>{product.marca}</td>
+                        <td>{product.genero}</td>
                       </tr>
                   );
                 })}
