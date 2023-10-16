@@ -22,19 +22,20 @@ const Login = () => {
                 }
             });
             
-            // Aquí puedes manejar la respuesta del servidor si es necesario
-            // Por ejemplo, mostrar un mensaje al usuario
-            if (res.status === 200) {
 
-                if (data.message == "si"){
+            const data = await res.json(); // Parsea la respuesta JSON
+
+            if (res.status === 200) {
+                console.log(data.message);
+                if (data.message === "si") {
                     window.location = "/home";
-                };
-                if (data.message == "ns"){
-                    // no se encontro el usuario
-                };
-                if(data.message == "np"){
-                    // no coincide la contra 
-                };
+                }
+                if (data.message === "ns") {
+                    // No se encontró el usuario
+                }
+                if (data.message === "np") {
+                    // No coincide la contraseña
+                }
 
                 console.log("Inicio de sesión exitoso");
 
