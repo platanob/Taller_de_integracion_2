@@ -63,6 +63,10 @@ const ProductsNew = () => {
                     <input type='' className='form-control' placeholder='Categoria'/>
                 </div>
                 <div className='form-group'>
+                    <label>Color</label>
+                    <input type='' className='form-control' placeholder='Color'/>
+                </div>
+                <div className='form-group'>
                     <label>Precio</label>
                     <input type='' className='form-control' placeholder='Precio'/>
                 </div>
