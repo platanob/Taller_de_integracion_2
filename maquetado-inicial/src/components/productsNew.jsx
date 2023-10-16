@@ -48,11 +48,15 @@ const ProductsNew = () => {
             <div className='container' id='cont'>
                 <div className='form-group'>
                     <label>Nombre Producto</label>
-                    <input type='email' className='form-control' placeholder='Nombre'/>
+                    <input type='' className='form-control' placeholder='Nombre'/>
                 <div/>
                 <div className='form-group'>
                     <label>Categoria</label>
-                    <input type='password' className='form-control' placeholder='Categoria'/>
+                    <input type='' className='form-control' placeholder='Categoria'/>
+                </div>
+                <div className='form-group'>
+                    <label>Color</label>
+                    <input type='' className='form-control' placeholder='Color'/>
                 </div>
                 <div className='form-group'>
                     <label>Precio</label>
