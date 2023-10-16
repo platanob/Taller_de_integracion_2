@@ -26,11 +26,7 @@ const Register = () => {
               "Content-Type": "application/json"
             }
           });
-          const data = await res.json();
-
-          if (data.message == "si"){
-            window.location = "/login";
-          }else{
+      
           // Aquí puedes manejar la respuesta del servidor si es necesario
           // por ejemplo, mostrar un mensaje al usuario
           <div className='toast' role='alert' aria-aria-live='assertive' aria-atomic='true'>
@@ -44,7 +40,7 @@ const Register = () => {
                 Registrado correctamente!
             </div>
           </div>
-          }
+
         } catch (error) {
           <div className='toast' role='alert' aria-aria-live='assertive' aria-atomic='true'>
               <div className='toast-header'>

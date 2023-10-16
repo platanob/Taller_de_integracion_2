@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import '../css-components/navbar.css';
+<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 import axios from "axios";
+=======
+import {Link} from 'react-router-dom'
+>>>>>>> 8d854d57b94df3535c2fef46b034df2a0c198d5c
 
 const Navbar = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -60,11 +64,21 @@ const Navbar = () => {
             </li>
           )}
 
+<<<<<<< HEAD
           {(!isAdmin && !isUser) && (
             <li>
               <Link to='/login'>Login</Link>
             </li>
           )}
+=======
+                <li>
+                  <Link to='/productos'>Products</Link>
+                </li>
+                
+                <li>
+                  <Link to="/carrito">🛒</Link>
+                </li>
+>>>>>>> 8d854d57b94df3535c2fef46b034df2a0c198d5c
 
           {(!isAdmin && !isUser) && (
             <li>

@@ -1,5 +1,5 @@
-from flask import Flask, request , jsonify 
-from werkzeug.security import generate_password_hash , check_password_hash
+from flask import Flask, request , jsonify #pip install flask==2.3.3  
+from werkzeug.security import generate_password_hash , check_password_hash#pip install werkzeug==2.3.7 
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from flask_login import LoginManager , login_user , logout_user , UserMixin, login_required, current_user
@@ -37,9 +37,7 @@ def login():
         correo = request.json.get("correo")
         contra = request.json.get("contra")
         usuario = client.bananashop.users.find_one({'correo' : correo})
-        if usuario == None :
-            return {'message' : 'ns'}
-        if check_password_hash(usuario['contra'] , contra):
+        if usuario and check_password_hash(usuario['contra'] , contra):
             us = user(nombre=usuario['nombre'],
                       correo=usuario['correo'],
                       telefono=usuario['telefono'],
@@ -53,9 +51,9 @@ def login():
                 esadmin = True
             if us.admins == "no":
                 esadmin = False
-            return {'message': 'si'}
+            return {'message': 'secion iniciada'}
         else : 
-            return {'message': 'np'}
+            return {'message': 'no se pudo iniciar sesion'}
 
 #para hacer vistas protegidas que se requiera le inicio de secion se ocupara @login_required
 
@@ -97,7 +95,7 @@ def create_user():
             'contra': contra,
             'admin' : 'no'
         }
-        return {'message' : 'si'} 
+        return response, 201  
     else:
         return not_found()
     
