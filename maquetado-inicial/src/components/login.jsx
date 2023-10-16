@@ -28,7 +28,6 @@ const Login = () => {
             // Por ejemplo, mostrar un mensaje al usuario
             if (res.status === 200) {
                 if (data.message == "si"){
-                    console.log("no");
                     window.location = "/home";
                 };
                 if (data.message == "ns"){

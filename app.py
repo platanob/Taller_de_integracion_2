@@ -5,22 +5,26 @@ from pymongo.server_api import ServerApi
 from flask_login import LoginManager , login_user , logout_user , UserMixin, login_required, current_user
 from flask_cors import CORS
 
-
+global esadmin
+global sesion
+esadmin = False
+sesion = False
 uri = "mongodb+srv://benja:123@bananashop.tzmfwsy.mongodb.net/?retryWites=true&w=majority"
 client = MongoClient(uri, server_api=ServerApi('1'))
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True) 
 login_manager_app = LoginManager(app)
 # Configura Flask-Login
 app.secret_key = 'papaya'  
 class user(UserMixin):
-    def __init__(self,nombre,correo,telefono,rut,direccion):
+    def __init__(self,nombre,correo,telefono,rut,direccion,admin):
         self.id = correo
         self.nombre = nombre
         self.correo = correo
         self.telefono = telefono
         self.rut = rut 
         self.direccion = direccion
+        self.admins = admin
 
 def conbd():
     if client is None:
@@ -28,6 +32,7 @@ def conbd():
     
 @app.route('/login', methods=['GET','POST'])
 def login():
+    global esadmin ,sesion
     if request.method == 'POST':
         correo = request.json.get("correo")
         contra = request.json.get("contra")
@@ -39,18 +44,27 @@ def login():
                       correo=usuario['correo'],
                       telefono=usuario['telefono'],
                       rut=usuario['rut'],
-                      direccion=usuario['direccion']
+                      direccion=usuario['direccion'],
+                      admin=usuario['admin']
                       )
             login_user(us)
+            sesion = True
+            if us.admins == "si":
+                esadmin = True
+            if us.admins == "no":
+                esadmin = False
             return {'message': 'si'}
         else : 
             return {'message': 'np'}
 
 #para hacer vistas protegidas que se requiera le inicio de secion se ocupara @login_required
 
-@app.route('/logout')
+
+@app.route('/logout',methods=['GET'])
 def logout():
-    logout_user()
+    global esadmin ,sesion
+    sesion = False
+    esadmin = False
     return {'message': 'secion cerrada'}
 
 @app.route('/registro', methods=['POST'])
@@ -71,7 +85,7 @@ def create_user():
     if nombre and telefono and rut and direccion and correo and contra  :
         contra_hashed = generate_password_hash(contra)
         id = client.bananashop.users.insert_one(
-            {'nombre': nombre,'correo' : correo ,'telefono': telefono, 'rut': rut, 'direccion': direccion, 'contra': contra_hashed}
+            {'nombre': nombre,'correo' : correo ,'telefono': telefono, 'rut': rut, 'direccion': direccion, 'contra': contra_hashed ,'admin' : 'no'}
         )
         response = {
             'id': str(id),
@@ -80,7 +94,8 @@ def create_user():
             'telefono': telefono,
             'rut': rut,
             'direccion': direccion,
-            'contra': contra
+            'contra': contra,
+            'admin' : 'no'
         }
         return {'message' : 'si'} 
     else:
@@ -102,23 +117,23 @@ def not_found(erro=None):
 def crear_producto():
     nombre = request.json.get("nombre")
     genero = request.json.get("genero")
+    categoria = request.json.get("categoria")
     talla  = request.json.get("talla")
-    color  = request.json.get("color")
     marca  = request.json.get("marca")
     costo  = request.json.get("costo")
 
     conbd()
 
-    if nombre and genero and talla and color and marca and costo :
+    if nombre and genero and talla and categoria and marca and costo :
         id = client.bananashop.productos.insert_one(
-            {'nombre': nombre,'genero': genero , 'talla' : talla , 'color': color , 'marca' : marca , 'costo' : costo}
+            {'nombre': nombre,'genero': genero , 'talla' : talla , 'categoria': categoria , 'marca' : marca , 'costo' : int(costo)}
         )
         response = {
             'id': str(id),
             'nombre': nombre,
             'genero': genero,
             'talla' : talla,
-            'color': color , 
+            'categoria' : categoria , 
             'marca' : marca , 
             'costo' : costo
 
@@ -139,7 +154,7 @@ def obtener_productos_por_nombre(nombre):
             'nombre': producto['nombre'],
             'genero': producto['genero'],
             'talla': producto['talla'],
-            'color': producto['color'],
+            'categoria': producto['categoria'],
             'marca': producto['marca'],
             'costo': producto['costo']
         }
@@ -172,37 +187,13 @@ def obtener_todos_los_productos():
     # Devolvemos la lista de todos los productos como respuesta
     return todos_los_productos, 200
 
-@app.route('/admin/crear_admin', methods=['POST'])
-@login_required
+@app.route('/usuariorol', methods=['GET'])
 def crear_admin():
-    # verifica si el usuario actual es un administrador
-    if current_user.rol != 'admin':
-        return {'message': 'Acceso no autorizado'}, 403
-
-    # obtener los datos del nuevo administrador
-    nombre = request.json.get("nombre")
-    correo = request.json.get("correo")
-    contra = request.json.get("contra")
-
-    conbd()
-
-    a = client.bananashop.users.find_one({'correo': correo})
-    if a:
-        return {'message': 'El correo ya está en uso'}
-
-    if nombre and correo:
-        contra_hash = generate_password_hash(contra)
-        
-        # agrega el nuevo administrador a la bd con el rol admin
-        id = client.bananashop.users.insert_one(
-            {'nombre': nombre,'correo': correo,
-            'telefono': request.json.get("telefono"),
-            'rut': request.json.get("rut"),
-            'direccion': request.json.get("direccion"),
-            'contra': contra_hash,
-            'rol': 'admin'  })
-    else: 
-        return not_found()
+    if esadmin :
+        print("hola")
+        return {'message' : 'si'}
+    if sesion :
+        return {'message' : 'siu'}
 
 if __name__ == '__main__':
     app.run(debug=True)
