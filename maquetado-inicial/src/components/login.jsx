@@ -26,21 +26,22 @@ const Login = () => {
             const data = await res.json(); // Parsea la respuesta JSON
 
             if (res.status === 200) {
-                console.log(data.message);
-                if (data.message === "si") {
+                if (data.message == "si"){
+                    console.log("no");
+                    alert("Inicio de sesión exitoso!")
                     window.location = "/home";
-                }
-                if (data.message === "ns") {
-                    // No se encontró el usuario
-                }
-                if (data.message === "np") {
-                    // No coincide la contraseña
-                }
+                };
+                if (data.message == "ns"){
+                    alert("Usuario no encontrado")
+                };
+                if(data.message == "np"){
+                    alert("Contraseña incorrecta, intentalo de nuevo.")
+                };
 
                 console.log("Inicio de sesión exitoso");
 
             } else {
-                console.error("Inicio de sesión fallido");
+                alert("Fallo al iniciar sesión.")
             }
         } catch (error) {
             console.error("Error al enviar la solicitud:", error);

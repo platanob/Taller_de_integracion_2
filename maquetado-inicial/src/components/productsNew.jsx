@@ -85,6 +85,7 @@ const ProductsNew = () => {
                         <label class="form-check-label" for="inlineRadio2">No</label>
                     </div>
                 </div>
+                    <button id='boton-login' type="submit" className="btn btn-dark">Enter</button>
                 </div>
             </div>
         </form>
