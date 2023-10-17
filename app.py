@@ -127,7 +127,7 @@ def crear_producto():
 
     if nombre and genero and talla and categoria and marca and costo :
         id = client.bananashop.productos.insert_one(
-            {'nombre': nombre,'genero': genero , 'talla' : talla , 'categoria': categoria , 'marca' : marca , 'costo' : costo, 'color' : color}
+            {'nombre': nombre,'genero': genero , 'talla' : talla , 'categoria': categoria , 'marca' : marca , 'costo' : int(costo), 'color' : color}
         )
         response = {
             'id': str(id),

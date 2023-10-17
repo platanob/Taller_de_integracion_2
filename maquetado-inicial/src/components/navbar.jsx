@@ -82,10 +82,11 @@ const Navbar = () => {
               <Link to='/register'>Register</Link>
             </li>
           )}
-
+          {(isUser) && (
           <li>
-            <Link to="/carrito">🛒</Link>
-          </li>
+          <Link to="/carrito">🛒</Link>
+        </li>
+          )}
           <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" onSubmit={handleSearchSubmit}>
             <input
               type="search"

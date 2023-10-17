@@ -10,7 +10,7 @@ const ProductsAdmin = () => {
   const [loading, setLoading] = useState(true); // Estado para controlar la carga
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:5000/productosAdmin")
+    axios.get("http://127.0.0.1:5000/productos")
       .then((res) => {
         // Realizar operaciones con los datos recibidos si es necesario
       })
@@ -21,8 +21,11 @@ const ProductsAdmin = () => {
     axios.get("http://127.0.0.1:5000/usuariorol", { withCredentials: true })
       .then((res) => {
         const rol = res.data.message;
-        if (rol === "no" && window.location.href === "http://localhost:3000/productsAdmin") {
+        if (rol === "no" || rol === "siu" && window.location.href === "http://localhost:3000/productsAdmin") {
           window.location = "home";
+        }
+        if(rol==="si"){
+          setLoading(false)
         }
       })
       .catch((error) => {

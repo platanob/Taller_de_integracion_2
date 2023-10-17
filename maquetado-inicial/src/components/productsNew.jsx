@@ -13,7 +13,7 @@ const ProductsNew = () => {
       try {
         const rolRes = await axios.get("http://127.0.0.1:5000/usuariorol", { withCredentials: true });
         const rol = rolRes.data.message;
-        if (rol === "no" && window.location.href === "http://localhost:3000/productsNew") {
+        if (rol === "no" || rol === "siu" && window.location.href === "http://localhost:3000/productsNew") {
             window.location = "home";
           }
         if(rol === "si"){
@@ -29,7 +29,7 @@ const ProductsNew = () => {
   const pro = async () => {
     const nombre = document.querySelector('input[placeholder="Nombre"]').value;
     const categoria = document.querySelector('input[placeholder="Categoria"]').value;
-    const genero = document.querySelector('input[placeholder="Genero"]').value;
+    const genero = document.querySelector('select[placeholder="Genero"]').value;
     const talla = document.querySelector('input[placeholder="Talla"]').value;
     const marca = document.querySelector('input[placeholder="Marca"]').value;
     const costo = document.querySelector('input[placeholder="Precio"]').value;
@@ -106,9 +106,9 @@ const ProductsNew = () => {
                     <div className="input-group mb-3">
                         <select class="form-select" placeholder='Genero'>
                             <option selected>Seleccione...</option>
-                            <option value="1">Masculino</option>
-                            <option value="2">Femenino</option>
-                            <option value="3">Unisex</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Unisex">Unisex</option>
                         </select>
                     </div>
                 <div className='form-group'>
