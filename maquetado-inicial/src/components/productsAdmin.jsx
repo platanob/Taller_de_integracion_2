@@ -1,27 +1,48 @@
-import React, {useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Navbar from './navbar';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { dataContext } from "./DataContext";
 import axios from 'axios';
 import '../css-components/productAdmin.css';
-
+import '../css-components/carga.css';
 const ProductsAdmin = () => {
-const { data } = useContext(dataContext);
+  const { data } = useContext(dataContext);
+  const [loading, setLoading] = useState(true); // Estado para controlar la carga
 
   useEffect(() => {
     axios.get("http://127.0.0.1:5000/productosAdmin")
       .then((res) => {
-        
+        // Realizar operaciones con los datos recibidos si es necesario
       })
       .catch((error) => {
         console.error("Error al recuperar los productos: ", error);
-      });
+      })
+
+    axios.get("http://127.0.0.1:5000/usuariorol", { withCredentials: true })
+      .then((res) => {
+        const rol = res.data.message;
+        if (rol === "no" && window.location.href === "http://localhost:3000/productsAdmin") {
+          window.location = "home";
+        }
+      })
+      .catch((error) => {
+        console.error("Error al recuperar los productos: ", error);
+      })
   }, []);
+
+  // Si todavía está cargando, mostrar un mensaje de carga
+  if (loading) {
+    return      ( <div className="loading-container">
+    <div className="loading-message">Cargando...</div>
+  </div>);
+  }
+
+  // Si la carga ha terminado, mostrar la tabla con los datos
   return (
-      <div>
-        <Navbar/>
-        <table id='table-admin' className='table table-light'>
-          <thead className='thead-dark'>
+    <div>
+      <Navbar />
+      <table id='table-admin' className='table table-light'>
+      <thead className='thead-dark'>
             <tr>
               <th scope='col'>Nombre</th>
               <th scope='col'>Marca</th>
@@ -50,9 +71,9 @@ const { data } = useContext(dataContext);
                   );
                 })}
             </tbody>  
-        </table>
-      </div>
-    )
-}
+      </table>
+    </div>
+  );
+};
 
 export default ProductsAdmin;

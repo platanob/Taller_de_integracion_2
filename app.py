@@ -193,10 +193,10 @@ def obtener_todos_los_productos():
 @app.route('/usuariorol', methods=['GET'])
 def crear_admin():
     if esadmin :
-        print("hola")
-        return {'message' : 'si'}
+        return jsonify({'message' : 'si'}),200
     if sesion :
-        return {'message' : 'siu'}
-
+        return jsonify({'message' : 'siu'}),200
+    else:
+        return jsonify({'message': 'no'}), 200
 if __name__ == '__main__':
     app.run(debug=True)
