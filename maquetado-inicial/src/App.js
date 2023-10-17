@@ -8,7 +8,6 @@ import ProductsNew from './components/productsNew';
 import Carrito  from './components/Carrito/carrito';
 import DataProvider from './components/DataContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Productos from './components/productos';
 
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
                 <Route path='/productsAdmin' element={<ProductsAdmin/>}></Route>
                 <Route path='/productsNew' element={<ProductsNew/>}></Route>
                 <Route path='/carrito' element={<Carrito/>}></Route>
-                <Route path='/productos' element={<Productos/>}></Route>
             </Routes>
           </BrowserRouter>
         </DataProvider>

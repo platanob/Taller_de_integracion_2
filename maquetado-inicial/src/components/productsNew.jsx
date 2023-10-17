@@ -84,9 +84,10 @@ const ProductsNew = () => {
                     <label>Nombre Producto</label>
                     <input type='' className='form-control' placeholder='Nombre'/>
                 <div/>
-                <div className='form-group'>
-                    <label>Categoria</label>
+                <div>
+                    <label>Categoría</label>
                     <input type='' className='form-control' placeholder='Categoria'/>
+                </div>
                 </div>
                 <div className='form-group'>
                     <label>Color</label>
@@ -102,15 +103,21 @@ const ProductsNew = () => {
                 </div>
                 <div className='form-group'>
                     <label>Género</label>
-                    <input type='' className='form-control' placeholder='Genero'/>
-                </div>
+                    <div className="input-group mb-3">
+                        <select class="form-select" placeholder='Genero'>
+                            <option selected>Seleccione...</option>
+                            <option value="1">Masculino</option>
+                            <option value="2">Femenino</option>
+                            <option value="3">Unisex</option>
+                        </select>
+                    </div>
                 <div className='form-group'>
                     <label>Marca</label>
                     <input type='' className='form-control' placeholder='Marca'/>
                 </div>
                 <div className='form-group'> 
-                    <label>Código</label>
-                    <input class="form-control" type="file" id="formFile"/>
+                    <label>Código</label>   
+                    <input type='' class="form-control" placeholder='URL'/>
                 </div>
                 <div className='form-group'>
                     <label>Disponible</label>

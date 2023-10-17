@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { dataContext } from "../DataContext";
+import './carrito.css'
 
 const Elementos = () => {
     const {cart} = useContext(dataContext)

@@ -5,27 +5,34 @@ import { dataContext } from "../DataContext";
 import Navbar from "../navbar";
 import React from "react";
 import { Link } from "react-router-dom";
+import './carrito.css';
 
 const Carrito = () => {
-  const {cart} = useContext(dataContext);
-  //condicion
-  return cart.length > 0 ? (
-    <>
-      <Navbar/>
-      <Elementos/>
-      <Carritototal/>
-    </>
-  ): (
-    <>
-      <Navbar/>
-      <h2 className="cart-message-center">No has seleccionado nada </h2>
-      <button >
-        <Link to="/productos">Vamos a comprar!!</Link>
-      </button>
-    </>
-    
-  );
+  const { cart } = useContext(dataContext);
 
+  return cart.length > 0 ? (
+    <div>
+      <Navbar/>
+      <div className="cart-container">
+        <div className="cart-content">
+          <Elementos />
+        </div>
+      <Carritototal/>
+      </div>
+    </div>
+  ) : (
+    <div>
+      <Navbar/>
+      <div className="cart-container">
+        <h2 className="cart-message-center">No has seleccionado nada </h2>
+        <div className="cart-actions">
+          <button>
+            <Link to="/products">Vamos a comprar!!</Link>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Carrito;

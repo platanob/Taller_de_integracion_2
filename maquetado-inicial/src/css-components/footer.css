@@ -1,0 +1,11 @@
+/* Agrega el siguiente estilo a tu archivo 'footer.css' */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  footer {
+    margin-top: auto;
+  }
+  

@@ -6,6 +6,7 @@ import axios from "axios";
 const Navbar = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isUser, setIsUser] = useState(false);
+  
 
   useEffect(() => {
     axios.get("http://127.0.0.1:5000/usuariorol", { withCredentials: true })
@@ -37,7 +38,17 @@ const Navbar = () => {
       console.error("Error al cerrar sesión: ", error);
     });
   };
+  const [searchTerm, setSearchTerm] = useState(''); // Estado para almacenar el término de búsqueda
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault(); // Previene el comportamiento predeterminado del formulario
+    // Aquí puedes realizar la búsqueda con searchTerm (por ejemplo, haciendo una solicitud a la API)
+    console.log(`Realizando búsqueda de: ${searchTerm}`);
+  };
   return (
     <nav id='navus'>
       <div className='container-fluid'>
@@ -46,7 +57,7 @@ const Navbar = () => {
       <div>
         <ul id='navi'>
           <li>
-            <Link to='/productos'>Products</Link>
+            <Link to='/products'>Products</Link>
           </li>
 
           {isAdmin && (
@@ -73,8 +84,17 @@ const Navbar = () => {
           )}
 
           <li>
-            <Link to="/a">🛒</Link>
+            <Link to="/carrito">🛒</Link>
           </li>
+          <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" onSubmit={handleSearchSubmit}>
+            <input
+              type="search"
+              className="form-control form-control-dark text-bg-dark"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+          </form>
         </ul>
       </div>
     </nav>
