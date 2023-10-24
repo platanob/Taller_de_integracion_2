@@ -1,5 +1,26 @@
-#table-admin{
-    display: grid;
-    place-content: center;
-    width: 50%;
-}
+#table-admin {
+    margin: 0 auto; 
+    width: 80%; /* Ancho de la tabla */
+    border-collapse: collapse;
+  }
+  
+  #table-admin th,
+  #table-admin td {
+    padding: 5px; /* Agregar espacio entre cada celda*/
+    text-align: center;
+    border: 1px solid #e1e1e1; /* Bordes a celdas */
+  }
+  
+  #table-admin th {
+    background-color: black; 
+    color: white; 
+  }
+  
+  #table-admin tr:hover {
+    background-color: #d4d4d4; 
+  }
+  
+  .btn {
+    margin-right: 5px; /* Espacio entre botones */
+  }
+  
