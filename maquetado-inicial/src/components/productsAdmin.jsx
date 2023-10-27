@@ -7,13 +7,15 @@ import '../css-components/productAdmin.css';
 import '../css-components/carga.css';
 
 const ProductsAdmin = () => {
-  const { data } = useContext(dataContext);
+  const { data, setData } = useContext(dataContext);
   const [loading, setLoading] = useState(true); // Estado para controlar la carga
 
   useEffect(() => {
     axios.get('http://127.0.0.1:5000/productos')
       .then((res) => {
-        // Realizar operaciones con los datos recibidos si es necesario
+        setData(res.data);
+        setLoading(false); 
+        console.log(res.data);
       })
       .catch((error) => {
         console.error('Error al recuperar los productos: ', error);
@@ -35,8 +37,16 @@ const ProductsAdmin = () => {
   }, []);
 
   // Función para eliminar un producto
-  const DeleteProduct = (productId) => {
-
+  const DeleteProduct = (nombre) => {
+    console.log('Eliminando producto con nombre:', nombre);
+    axios.delete(`http://127.0.0.1:5000/productos/${nombre}`)
+      .then((res) => {
+        // Eliminar el producto del estado local
+        setData(data.filter(product => product.nombre !== nombre));
+      })
+      .catch((error) => {
+        console.error('Error al eliminar el producto: ', error);
+      });
   };
 
   // Si todavía está cargando, mostrar un mensaje de carga
@@ -91,7 +101,7 @@ const ProductsAdmin = () => {
                   <button
                     className="btn btn-danger"
                     onClick={() => {
-                      DeleteProduct(product._id);
+                      DeleteProduct(product.nombre);
                     }}
                   >
                     Eliminar

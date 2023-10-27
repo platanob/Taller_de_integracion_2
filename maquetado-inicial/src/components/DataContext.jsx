@@ -15,7 +15,7 @@ const DataProvider = ({ children }) => {
     setData(res.data));
   }, []);
 
-  return <dataContext.Provider value={{ data, cart,setCart }}>{children}</dataContext.Provider>;
+  return <dataContext.Provider value={{ data,setData, cart,setCart }}>{children}</dataContext.Provider>;
 };
 
 // Exporta el componente DataProvider

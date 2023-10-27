@@ -190,6 +190,17 @@ def obtener_todos_los_productos():
     # Devolvemos la lista de todos los productos como respuesta
     return todos_los_productos, 200
 
+@app.route('/productos/<string:nombre>', methods=['DELETE'])
+def eliminar_producto(nombre):
+    conbd()  
+    # Eliminar producto con ID proporcionado
+    result = client.bananashop.productos.delete_one({'nombre': nombre})
+
+    if result.deleted_count == 1:
+        return {'message': 'Producto eliminado con éxito'}, 200
+    else:
+        return {'message': 'No se pudo eliminar'}, 404   
+
 @app.route('/usuariorol', methods=['GET'])
 def crear_admin():
     if esadmin :
