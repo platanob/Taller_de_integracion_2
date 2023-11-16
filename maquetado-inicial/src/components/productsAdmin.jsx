@@ -90,14 +90,9 @@ const ProductsAdmin = () => {
                 <td>{product.marca}</td>
                 <td>{product.genero}</td>
                 <td>
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                      // Redirigir a la pagina de edicion
-                    }}
-                  >
+                  <Link to={`/productsEdit/${product.nombre}`} className="btn btn-primary">
                     Editar
-                  </button>
+                  </Link>
                   <button
                     className="btn btn-danger"
                     onClick={() => {
