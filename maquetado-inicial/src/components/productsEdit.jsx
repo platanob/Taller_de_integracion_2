@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from './navbar';
 import axios from 'axios';
+import '../css-components/productsEdit.css';
 
 const ProductsEdit = () => {
   const { nombre } = useParams(); // Cambiado de _id a nombre
@@ -18,16 +19,22 @@ const ProductsEdit = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!nombre) {
+        console.error('Nombre de producto no definido');
+        return;
+      }
+  
       try {
-        const res = await axios.get(`http://127.0.0.1:5000/productos/nombre/${nombre}`); // Cambiado de _id a nombre
-        setEditedProduct(res.data);
+        const res = await axios.get(`http://127.0.0.1:5000/productos/nombre/${nombre}`);
+        console.log('Datos del producto:', res.data); 
+        setEditedProduct(res.data[0]); // Accede a los valores en el arreglo recibido y los muestra en los campos
         setLoading(false);
       } catch (error) {
         console.error('Error al recuperar el producto: ', error);
         setLoading(false);
       }
     };
-
+  
     fetchData();
   }, [nombre]);
 
@@ -43,6 +50,7 @@ const ProductsEdit = () => {
 
       if (res.status === 200) {
         alert('Producto actualizado');
+        window.location.href = '/productsAdmin';
       } else {
         console.error('No se pudo actualizar el producto');
       }
@@ -66,7 +74,7 @@ const ProductsEdit = () => {
     <div>
       <Navbar />
       <h1>Editar Producto</h1>
-      <form id="formulario" onSubmit={handleFormSubmit}>
+      <form id="formu" onSubmit={handleFormSubmit} className="form-container">
         <div className="form-group">
           <label>Nombre Producto</label>
           <input
@@ -76,7 +84,6 @@ const ProductsEdit = () => {
             name="nombre"
             value={editedProduct.nombre}
             onChange={handleInputChange}
-            readOnly
           />
         </div>
         <div className="form-group">
