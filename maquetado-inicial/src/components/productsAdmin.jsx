@@ -43,6 +43,7 @@ const ProductsAdmin = () => {
       .then((res) => {
         // Eliminar el producto del estado local
         setData(data.filter(product => product.nombre !== nombre));
+        alert('Producto eliminado');
       })
       .catch((error) => {
         console.error('Error al eliminar el producto: ', error);
