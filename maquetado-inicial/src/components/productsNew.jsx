@@ -34,6 +34,7 @@ const ProductsNew = () => {
     const marca = document.querySelector('input[placeholder="Marca"]').value;
     const costo = document.querySelector('input[placeholder="Precio"]').value;
     const color = document.querySelector('input[placeholder="Color"]').value;
+    const url = document.querySelector('input[placeholder="url"]').value;
     const dato = {
         nombre : nombre,
         categoria : categoria,
@@ -41,7 +42,8 @@ const ProductsNew = () => {
         talla : talla,
         marca : marca ,
         costo : costo,
-        color : color
+        color : color,
+        url : url
     };
     try {
       const res = await fetch("http://127.0.0.1:5000/newproduc", {
