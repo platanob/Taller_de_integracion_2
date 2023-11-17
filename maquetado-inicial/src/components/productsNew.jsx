@@ -129,6 +129,10 @@ const ProductsNew = () => {
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
                         <label class="form-check-label" for="inlineRadio2">No</label>
                     </div>
+                <div className='form-group'>
+                  <label>URL</label>
+                  <input type='url' className='form-control' placeholder='url'/>
+                </div >
                 </div>
                     <button id='boton-login' type="submit" className="btn btn-dark">Enter</button>
                 </div>
