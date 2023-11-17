@@ -171,7 +171,6 @@ def obtener_todos_los_productos():
     
     # Inicializamos una lista para almacenar todos los productos
     todos_los_productos = []
-
     for producto in productos:
         # Creamos un diccionario para cada producto encontrado
         producto_encontrado = {

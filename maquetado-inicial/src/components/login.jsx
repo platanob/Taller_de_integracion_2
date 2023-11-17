@@ -58,7 +58,7 @@ const Login = () => {
     <div >
         <Navbar/>
         <div id='ff'>
-            <h1>Inicia Sesión</h1>
+            <h1>Iniciar Sesión</h1>
         </div>
         <form id='formulario' onSubmit={mandardatos}>
             <div className='container' id='cont'>
