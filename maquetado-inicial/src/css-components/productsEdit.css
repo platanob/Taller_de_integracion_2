@@ -1,0 +1,24 @@
+/* Agrega estilos para centrar el formulario */
+.form-container {
+  max-width: 400px; 
+  margin: 0 auto; 
+  padding: 20px; 
+
+}
+
+#formu {
+    text-align: center;
+    background-color: #dcdcdc; 
+    width: 40%;
+    font-size: 120%;
+    padding: 20px; /* Añadido espacio interno para mejorar la apariencia */
+    border-radius: 8%; /* Agregado para coincidir con el contenedor */
+}
+
+.btn-dark {
+  background-color: #343a40; 
+  color: #fff; 
+  border: none; 
+  padding: 10px 15px; 
+  cursor: pointer; 
+}

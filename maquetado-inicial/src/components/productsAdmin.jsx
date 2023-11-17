@@ -43,6 +43,7 @@ const ProductsAdmin = () => {
       .then((res) => {
         // Eliminar el producto del estado local
         setData(data.filter(product => product.nombre !== nombre));
+        alert('Producto eliminado');
       })
       .catch((error) => {
         console.error('Error al eliminar el producto: ', error);
@@ -90,14 +91,9 @@ const ProductsAdmin = () => {
                 <td>{product.marca}</td>
                 <td>{product.genero}</td>
                 <td>
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                      // Redirigir a la pagina de edicion
-                    }}
-                  >
+                  <Link to={`/productsEdit/${product.nombre}`} className="btn btn-primary">
                     Editar
-                  </button>
+                  </Link>
                   <button
                     className="btn btn-danger"
                     onClick={() => {

@@ -12,7 +12,7 @@ sesion = False
 uri = "mongodb+srv://benja:123@bananashop.tzmfwsy.mongodb.net/?retryWites=true&w=majority"
 client = MongoClient(uri, server_api=ServerApi('1'))
 app = Flask(__name__)
-CORS(app, supports_credentials=True) 
+CORS(app, supports_credentials=True, methods=["GET", "POST", "PATCH", "DELETE"])
 login_manager_app = LoginManager(app)
 # Configura Flask-Login
 app.secret_key = 'papaya'  
@@ -144,7 +144,7 @@ def crear_producto():
         return not_found()
     
 
-@app.route('/productos/<nombre>', methods=['GET'])
+@app.route('/productos/nombre/<string:nombre>', methods=['GET'])
 def obtener_productos_por_nombre(nombre):
     conbd() 
     productos = client.bananashop.productos.find({'nombre': nombre})
@@ -163,6 +163,21 @@ def obtener_productos_por_nombre(nombre):
         productos_encontrados.append(producto_encontrado)
 
     return productos_encontrados, 201
+
+@app.route('/productos/nombre/<string:nombre>', methods=['PATCH'])
+def actualizar_producto(nombre):
+    conbd()
+    # Obtener los datos actualizados del producto desde la solicitud
+    datos_actualizados = request.json
+
+    # Actualizar el producto en la base de datos
+    result = client.bananashop.productos.update_one({'nombre': nombre}, {'$set': datos_actualizados})
+
+    if result.modified_count == 1:
+        return {'message': 'Producto actualizado con éxito'}, 200
+    else:
+        return {'message': 'No se pudo actualizar el producto'}, 404
+
 @app.route('/productos', methods=['GET'])
 def obtener_todos_los_productos():
     conbd()  # Esto parece ser tu función de conexión a la base de datos
