@@ -1,27 +1,13 @@
-header h1{
-    margin-top: 1%;
+
+#topH h1{
     font-size: 60px;
-    font-weight: 600;
-    color: gray;
-    background-clip: text;
-    -webkit-background-clip: text;
-    text-align: center;
+    color: rgb(0,0,0);
+    font-family:Helvetica, sans-serif ;
 }
-
-h3{
-    font-size: 30px;
-    font-weight: 600;
-    color:grey;
-    background-clip: text;
-    -webkit-background-clip: text;
-    text-align: center;
-    
-}
-
 
 
 #ss{
-    padding-top:5%;
+    padding-top:1%;
 }
 .each-slide-effect > div {
     display: flex;
@@ -30,4 +16,25 @@ h3{
     background-size: cover;
     height: 350px;
   }
-  
+
+  #carrusel{
+    size: 60%;
+  }
+#slider-1{
+    width: 80%;
+    transform: translate(10%, 2%);
+}
+
+#midH{
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+}
+#oferta{
+    position: absolute;
+    width: 30%;
+    transform: translate(170%, 4%);
+}
+#slider-2{
+    transform: translate(20%, 4%);
+}
