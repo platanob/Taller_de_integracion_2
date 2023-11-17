@@ -13,7 +13,7 @@ const ProductsNew = () => {
       try {
         const rolRes = await axios.get("http://127.0.0.1:5000/usuariorol", { withCredentials: true });
         const rol = rolRes.data.message;
-        if (rol === "no" || rol === "siu" && window.location.href === "http://localhost:3000/productsNew") {
+        if ((rol === "no" || rol === "siu") && window.location.href === "http://localhost:3000/productsNew"  ) {
             window.location = "home";
           }
         if(rol === "si"){
@@ -116,10 +116,6 @@ const ProductsNew = () => {
                 <div className='form-group'>
                     <label>Marca</label>
                     <input type='' className='form-control' placeholder='Marca'/>
-                </div>
-                <div className='form-group'> 
-                    <label>Código</label>   
-                    <input type='' class="form-control" placeholder='URL'/>
                 </div>
                 <div className='form-group'>
                     <label>Disponible</label>
