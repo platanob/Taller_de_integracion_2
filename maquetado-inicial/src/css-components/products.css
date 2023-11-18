@@ -12,6 +12,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.imagen-producto {
+    width: 150px; /* Ajusta el ancho según tus necesidades */
+    height: auto; /* La altura se ajustará automáticamente para mantener la proporción original de la imagen */
+  }
 .App{
     width: 100%;
     min-height: 100vh;

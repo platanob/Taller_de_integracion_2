@@ -29,9 +29,10 @@ const Products = () => {
       <div className="productos">
         {data.map((product) => (
           <div className="producto" key={product._id} onClick={()=> buyProducts(product)}>
+            <img src={product.url} alt={product.nombre} className="imagen-producto"/>
             <h3>{product.nombre}</h3>
             <h3>{product.genero}</h3>
-            <h4>{product.costo}</h4>
+            <h4>${product.costo} CLP</h4>
             <p>Comprar</p>
           </div>
         ))}
