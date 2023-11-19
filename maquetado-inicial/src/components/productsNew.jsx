@@ -11,7 +11,7 @@ const ProductsNew = () => {
   useEffect(() => {
     const fetchUserRole = async () => {
       try {
-        const rolRes = await axios.get("http://127.0.0.1:5000/usuariorol", { withCredentials: true });
+        const rolRes = await axios.get("https://backbanana.onrender.com/usuariorol", { withCredentials: true });
         const rol = rolRes.data.message;
         if ((rol === "no" || rol === "siu") && window.location.href === "http://localhost:3000/productsNew"  ) {
             window.location = "home";
@@ -46,7 +46,7 @@ const ProductsNew = () => {
         url : url
     };
     try {
-      const res = await fetch("http://127.0.0.1:5000/newproduc", {
+      const res = await fetch("https://backbanana.onrender.com/newproduc", {
         method: "POST",
         body: JSON.stringify(dato),
         headers: {

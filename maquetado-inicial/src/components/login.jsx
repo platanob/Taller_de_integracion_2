@@ -14,7 +14,7 @@ const Login = () => {
         };
     
         try {
-            const res = await fetch("http://127.0.0.1:5000/login", {
+            const res = await fetch("https://backbanana.onrender.com/login", {
                 method: "POST",
                 body: JSON.stringify(dato),
                 headers: {

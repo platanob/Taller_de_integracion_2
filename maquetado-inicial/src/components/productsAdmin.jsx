@@ -11,7 +11,7 @@ const ProductsAdmin = () => {
   const [loading, setLoading] = useState(true); // Estado para controlar la carga
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5000/productos')
+    axios.get('https://backbanana.onrender.com/productos')
       .then((res) => {
         setData(res.data);
         setLoading(false); 
@@ -21,7 +21,7 @@ const ProductsAdmin = () => {
         console.error('Error al recuperar los productos: ', error);
       });
 
-    axios.get('http://127.0.0.1:5000/usuariorol', { withCredentials: true })
+    axios.get('https://backbanana.onrender.com/usuariorol', { withCredentials: true })
       .then((res) => {
         const rol = res.data.message;
         if (rol === 'no' || (rol === 'siu' && window.location.href === 'http://localhost:3000/productsAdmin')) {
@@ -39,7 +39,7 @@ const ProductsAdmin = () => {
   // Función para eliminar un producto
   const DeleteProduct = (nombre) => {
     console.log('Eliminando producto con nombre:', nombre);
-    axios.delete(`http://127.0.0.1:5000/productos/${nombre}`)
+    axios.delete(`https://backbanana.onrender.com/productos/${nombre}`)
       .then((res) => {
         // Eliminar el producto del estado local
         setData(data.filter(product => product.nombre !== nombre));

@@ -20,7 +20,7 @@ const Register = () => {
     
 
         try {
-          const res = await fetch("http://127.0.0.1:5000/registro", {
+          const res = await fetch("https://backbanana.onrender.com/registro", {
             method: "POST",
             body: JSON.stringify(datos),
             headers: {

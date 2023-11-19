@@ -9,7 +9,7 @@ const Navbar = () => {
   
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:5000/usuariorol", { withCredentials: true })
+    axios.get("https://backbanana.onrender.com/usuariorol", { withCredentials: true })
     .then((res) => {
       const rol = res.data.message;
       if (rol === "si") {
@@ -29,7 +29,7 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = () => {
-    axios.get("http://127.0.0.1:5000/logout", { withCredentials: true })
+    axios.get("https://backbanana.onrender.com/logout", { withCredentials: true })
     .then((res) => {
       console.log(res.data.message);
       window.location.href = "/login";

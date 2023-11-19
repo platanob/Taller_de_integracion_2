@@ -10,7 +10,7 @@ const DataProvider = ({ children }) => {
 
   useEffect(() => {
     // Realiza una peticion GET a la URL de la API de productos en el servidor Flask.
-    axios.get("http://127.0.0.1:5000/productos").then((res) => 
+    axios.get("http://platano.pythonanywhere.com//productos").then((res) => 
     // Actualiza el estado con los datos de la respuesta
     setData(res.data));
   }, []);

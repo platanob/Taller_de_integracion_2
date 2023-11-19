@@ -25,7 +25,7 @@ const ProductsEdit = () => {
       }
   
       try {
-        const res = await axios.get(`http://127.0.0.1:5000/productos/nombre/${nombre}`);
+        const res = await axios.get(`https://backbanana.onrender.com/productos/nombre/${nombre}`);
         console.log('Datos del producto:', res.data); 
         setEditedProduct(res.data[0]); // Accede a los valores en el arreglo recibido y los muestra en los campos
         setLoading(false);
@@ -46,7 +46,7 @@ const ProductsEdit = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.patch(`http://127.0.0.1:5000/productos/nombre/${nombre}`, editedProduct); // Cambiado de _id a nombre
+      const res = await axios.patch(`https://backbanana.onrender.com/productos/nombre/${nombre}`, editedProduct); // Cambiado de _id a nombre
 
       if (res.status === 200) {
         alert('Producto actualizado');
