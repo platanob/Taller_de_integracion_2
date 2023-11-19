@@ -7,17 +7,19 @@ import "../css-components/products.css";
 
 const Products = () => {
   // Obtiene los datos de productos del contexto.
-  const { data, cart, setCart } = useContext(dataContext);
+  const { data, cart, setCart , setData} = useContext(dataContext);
   const buyProducts = (product) => {
     console.log(product)
     setCart([...cart, product])
   }
 
   useEffect(() => {
-     axios.get("http://127.0.0.1:5000/productos")
-       .then((res) => {
-         // Actualiza el contexto o el estado local con los datos obtenidos.
-       })
+    axios.get('https://backbanana.onrender.com/productos')
+      .then((res) => {
+        setData(res.data);
+        console.log(res.data);
+      })
+
        .catch((error) => {
          console.error("Error al recuperar los productos: ", error);
       });
@@ -44,7 +46,7 @@ const Products = () => {
           <button>Ver más</button>
           <div>
             <a href="#">Ver detalles</a>
-          
+
           </div>
         </div>
       </div>
