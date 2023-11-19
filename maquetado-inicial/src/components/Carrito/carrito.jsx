@@ -17,7 +17,7 @@ const Carrito = () => {
         <div className="cart-content">
           <Elementos />
         </div>
-      <Carritototal/>
+        <Carritototal/>
       </div>
     </div>
   ) : (
