@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import '../css-components/navbar.css';
-import { Link } from 'react-router-dom';
+import { Link , useHistory} from 'react-router-dom';
 import axios from "axios";
+
 
 const Navbar = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isUser, setIsUser] = useState(false);
-  
+  const history = useHistory();
 
   useEffect(() => {
     axios.get("https://backbanana.onrender.com/usuariorol", { withCredentials: true })
@@ -32,7 +33,7 @@ const Navbar = () => {
     axios.get("https://backbanana.onrender.com/logout", { withCredentials: true })
     .then((res) => {
       console.log(res.data.message);
-      window.location.href = "/login";
+      history.push('/home');
     })
     .catch((error) => {
       console.error("Error al cerrar sesión: ", error);

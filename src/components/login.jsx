@@ -1,10 +1,12 @@
 import React from 'react';
 import Navbar from './navbar'
 import "../css-components/login.css";
+import { useHistory } from 'react-router-dom';
 
 
 
 const Login = () => {
+    const history = useHistory();
     const log = async () => {
         const correo = document.querySelector('input[placeholder="Email"]').value;
         const contra = document.querySelector('input[placeholder="Password"]').value;
@@ -26,15 +28,15 @@ const Login = () => {
             const data = await res.json(); // Parsea la respuesta JSON
 
             if (res.status === 200) {
-                if (data.message == "si"){
+                if (data.message === "si"){
                     console.log("no");
                     alert("Inicio de sesión exitoso!")
-                    window.location = "/home";
+                    history.push('/home');
                 };
-                if (data.message == "ns"){
+                if (data.message === "ns"){
                     alert("Usuario no encontrado")
                 };
-                if(data.message == "np"){
+                if(data.message === "np"){
                     alert("Contraseña incorrecta, intentalo de nuevo.")
                 };
 
