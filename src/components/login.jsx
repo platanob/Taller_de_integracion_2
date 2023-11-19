@@ -1,12 +1,12 @@
 import React from 'react';
 import Navbar from './navbar'
 import "../css-components/login.css";
-import { useHistory } from 'react-router-dom';
+import {  useNavigate  } from 'react-router-dom';
 
 
 
 const Login = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const log = async () => {
         const correo = document.querySelector('input[placeholder="Email"]').value;
         const contra = document.querySelector('input[placeholder="Password"]').value;
@@ -31,7 +31,7 @@ const Login = () => {
                 if (data.message === "si"){
                     console.log("no");
                     alert("Inicio de sesión exitoso!")
-                    history.push('/home');
+                    navigate('/home');
                 };
                 if (data.message === "ns"){
                     alert("Usuario no encontrado")
