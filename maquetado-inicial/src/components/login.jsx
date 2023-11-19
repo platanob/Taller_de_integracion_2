@@ -26,15 +26,15 @@ const Login = () => {
             const data = await res.json(); // Parsea la respuesta JSON
 
             if (res.status === 200) {
-                if (data.message == "si"){
+                if (data.message === "si"){
                     console.log("no");
                     alert("Inicio de sesión exitoso!")
                     window.location = "/home";
                 };
-                if (data.message == "ns"){
+                if (data.message === "ns"){
                     alert("Usuario no encontrado")
                 };
-                if(data.message == "np"){
+                if(data.message === "np"){
                     alert("Contraseña incorrecta, intentalo de nuevo.")
                 };
 
