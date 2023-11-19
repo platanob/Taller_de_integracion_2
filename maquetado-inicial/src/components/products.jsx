@@ -23,7 +23,7 @@ const Products = () => {
        .catch((error) => {
          console.error("Error al recuperar los productos: ", error);
       });
-  }, []);
+  }, [setData]);
 
   return (
     <div>
