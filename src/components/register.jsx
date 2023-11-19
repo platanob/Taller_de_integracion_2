@@ -29,7 +29,7 @@ const Register = () => {
           });
           const data = await res.json();
 
-          if (data.message == "si"){
+          if (data.message === "si"){
             alert("Registro exitoso!")
             window.location = "/login";
           }else{
