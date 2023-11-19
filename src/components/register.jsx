@@ -1,6 +1,7 @@
 import Navbar from './navbar';
-
+import {  useNavigate  } from 'react-router-dom';
 const Register = () => {
+    const navigate = useNavigate();
     const makerEQUEST = async () => {
         const nombre = document.querySelector('input[placeholder="Name"]').value;
         const correo = document.querySelector('input[placeholder="Email"]').value;
@@ -31,7 +32,7 @@ const Register = () => {
 
           if (data.message === "si"){
             alert("Registro exitoso!")
-            window.location = "/login";
+            navigate('/login');
           }else{
             alert("Error en el registro")
 

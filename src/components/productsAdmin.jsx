@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Navbar from './navbar';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 import { dataContext } from './DataContext';
 import axios from 'axios';
 import '../css-components/productAdmin.css';
@@ -9,7 +9,7 @@ import '../css-components/carga.css';
 const ProductsAdmin = () => {
   const { data, setData } = useContext(dataContext);
   const [loading, setLoading] = useState(true); // Estado para controlar la carga
-
+  const navigate = useNavigate();
   useEffect(() => {
     axios.get('https://backbanana.onrender.com/productos')
       .then((res) => {
@@ -24,8 +24,8 @@ const ProductsAdmin = () => {
     axios.get('https://backbanana.onrender.com/usuariorol', { withCredentials: true })
       .then((res) => {
         const rol = res.data.message;
-        if (rol === 'no' || (rol === 'siu' && window.location.href === 'http://localhost:3000/productsAdmin')) {
-          window.location = 'home';
+        if (rol === 'no' || (rol === 'siu' && window.location.href === 'https://bananashop2023.netlify.app/productsAdmin')) {
+          navigate('/home');
         }
         if (rol === 'si') {
           setLoading(false);

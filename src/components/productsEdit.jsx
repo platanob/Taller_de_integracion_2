@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams , useNavigate } from 'react-router-dom';
 import Navbar from './navbar';
 import axios from 'axios';
 import '../css-components/productsEdit.css';
@@ -7,6 +7,7 @@ import '../css-components/productsEdit.css';
 const ProductsEdit = () => {
   const { nombre } = useParams(); // Cambiado de _id a nombre
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   const [editedProduct, setEditedProduct] = useState({
     nombre: '',
     categoria: '',
@@ -50,7 +51,8 @@ const ProductsEdit = () => {
 
       if (res.status === 200) {
         alert('Producto actualizado');
-        window.location.href = '/productsAdmin';
+        navigate('/productsAdmin');
+
       } else {
         console.error('No se pudo actualizar el producto');
       }

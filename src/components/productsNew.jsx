@@ -3,9 +3,11 @@ import Navbar from './navbar';
 import '../css-components/productsNew.css';
 import '../css-components/carga.css';
 import axios from 'axios';
+import {  useNavigate  } from 'react-router-dom';
 
 const ProductsNew = () => {
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
     console.log(loading)
 
   useEffect(() => {
@@ -13,8 +15,8 @@ const ProductsNew = () => {
       try {
         const rolRes = await axios.get("https://backbanana.onrender.com/usuariorol", { withCredentials: true });
         const rol = rolRes.data.message;
-        if ((rol === "no" || rol === "siu") && window.location.href === "http://localhost:3000/productsNew"  ) {
-            window.location = "home";
+        if ((rol === "no" || rol === "siu") && window.location.href === "https://bananashop2023.netlify.app/productsNew"  ) {
+          navigate('/home');
           }
         if(rol === "si"){
         setLoading(false);}
@@ -56,7 +58,7 @@ const ProductsNew = () => {
 
       if (res.status === 200 || res.status === 201) {
         alert("Producto agregado");
-        window.location = "productsAdmin";
+        navigate('/home');
       } else {
         console.error("No se pudo agregar el producto");
       }
